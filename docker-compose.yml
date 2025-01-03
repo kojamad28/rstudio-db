@@ -1,0 +1,16 @@
+services:
+  rstudio:
+    build: .
+    image: kojamad28/rstudio-stats:latest
+    container_name: rstudio
+    environment:
+      - TZ=Asia/Tokyo
+    env_file:
+      - ./.env
+    ports:
+     - "8787:8787"
+    volumes:
+     - ./R/bioconductor_docker:/usr/local/lib/R/host-site-library
+     - ./R/data:/home/rstudio
+    tty: true
+    stdin_open: true
