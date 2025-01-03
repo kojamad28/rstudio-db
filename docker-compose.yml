@@ -1,7 +1,18 @@
 services:
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    environment:
+      - TZ=Asia/Tokyo
+    env_file:
+      - ./R/data/postgres/.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   rstudio:
     build: .
-    image: kojamad28/rstudio-stats:latest
+    image: kojamad28/rstudio-db:latest
     container_name: rstudio
     environment:
       - TZ=Asia/Tokyo
@@ -10,7 +21,6 @@ services:
     ports:
      - "8787:8787"
     volumes:
-     - ./R/bioconductor_docker:/usr/local/lib/R/host-site-library
      - ./R/data:/home/rstudio
     tty: true
     stdin_open: true
