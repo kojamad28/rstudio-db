@@ -1,3 +1,3 @@
-# RStudio Stats
+# RStudio DB
 
-This repository provides a basic environment for statistical analyses using RStudio.
+This repository provides a basic environment for database manipulation using RStudio.
